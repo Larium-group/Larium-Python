@@ -1,10 +1,11 @@
-import modules.utils as utils
-import modules.timeutils as timeutils
-import modules.pdutils as pdutils
+from datetime import datetime
 from pathlib import Path
-from datetime import datetime, timedelta
-from config import config, datetimeindex_format
+
 import data.s3_manager as s3
+import modules.pdutils as pdutils
+import modules.timeutils as timeutils
+import modules.utils as utils
+from config import datetimeindex_format
 
 
 class FileManager:
@@ -35,6 +36,7 @@ class FileManager:
                 else:
                     df = pdutils.read_time_series(str(file_path), datetimeindex=datetimeindex)
             except FileNotFoundError:
+                print(f"[FileManager] Can't find file: {file_name}")
                 df = None
 
             if data is None:
@@ -53,7 +55,7 @@ class FileManager:
         elif type(dates) is list:
             _dates = dates
         else:
-            raise TypeError("illegal type of dates argument.")
+            raise TypeError("[FileManager] illegal type of dates argument.")
 
         data = self.__load__(stock, _dates, datetimeindex)
         if data is not None and self.verbose:

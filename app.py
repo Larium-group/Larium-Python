@@ -1,10 +1,11 @@
 from threading import Thread
 from flask import Flask
-
+import JavaServerMonitor
 from products.pulse import Pulse
 
 app = Flask(__name__)
 pulseIns = Pulse(verbose=True)
+JavaServerMonitor.init_monitor()
 
 
 @app.route('/')
