@@ -46,6 +46,19 @@ stocks_dict:
       - 'Alibaba Group Holding Limited'
       - 'Alibaba Group Holding'
     ticker: BABA
+  vroom inc:
+    key_words:
+      - ''
+    synanmous:
+      - 'Vroom'
+      - ' Inc.'
+    ticker: VRM
+  carvana co:
+    key_words:
+      - ''
+    synanmous:
+      - Carvana
+    ticker: CVNA
   alternet_systems:
     key_words:
       - ''
